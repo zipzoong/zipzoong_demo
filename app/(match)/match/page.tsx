@@ -3,6 +3,9 @@
 import React, { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import MatchLeftMenu from "@/app/components/menu/matchLeftMenu";
+import ProfileCard from "@/app/components/card/profileCard";
+import test01 from "@/app/image/test/test1.png";
+import test02 from "@/app/image/test/test2.png";
 
 const professionals = [
   {
@@ -10,14 +13,14 @@ const professionals = [
     name: "{중개사명} 중개사",
     title: "자기소개 작성(20자제한)",
     description: "인문학 청소 중 가장 정책에 적합한...",
-    img: "path/to/image",
+    img: test01,
   },
   {
     id: 2,
     name: "홍길동 중개사",
     title: "자기소개 작성(20자제한)",
     description: "인문학 청소 중 가장 정책에 적합한...",
-    img: "path/to/image",
+    img: test02,
   },
 ];
 
@@ -89,41 +92,32 @@ const MatchPage = () => {
           {/* List of Professionals */}
           <div className="space-y-6">
             {professionals.map((professional) => (
-              <div
+              <ProfileCard
                 key={professional.id}
-                className="flex items-center justify-between bg-white p-4 rounded-lg shadow-md"
-              >
-                {/* Professional Image */}
-                <img
-                  src={professional.img}
-                  alt={professional.name}
-                  className="w-16 h-16 rounded-full"
-                />
-
-                {/* Professional Info */}
-                <div className="flex-grow pl-4">
-                  <h3 className="font-semibold text-lg">{professional.name}</h3>
-                  <p className="text-sm text-gray-600">{professional.title}</p>
-                  <p className="text-xs text-gray-400">
-                    {professional.description}
-                  </p>
-                </div>
-
-                {/* View Detail Button */}
-                <button className="bg-blue-500 text-white py-2 px-4 rounded-lg">
-                  자세히 보기
-                </button>
-              </div>
+                profileImage={professional.img}
+                name={professional.name}
+                title={professional.title}
+                portfolioCount={0} // 포트폴리오 수는 고정값으로 설정하거나 수정 가능
+                introText={professional.description}
+                specialty={activeCategory}
+                description={professional.description}
+              />
             ))}
           </div>
 
           {/* Pagination or Navigation */}
           <div className="mt-8 flex justify-center">
-            <button className="p-2 bg-white rounded-full shadow-md">
+            <button
+              className="p-2 bg-white rounded-full shadow-md"
+              onClick={prevSlide}
+            >
               <ChevronLeft className="w-6 h-6 text-gray-700" />
             </button>
             <span className="mx-4 text-gray-700">Page 1 of 3</span>
-            <button className="p-2 bg-white rounded-full shadow-md">
+            <button
+              className="p-2 bg-white rounded-full shadow-md"
+              onClick={nextSlide}
+            >
               <ChevronRight className="w-6 h-6 text-gray-700" />
             </button>
           </div>

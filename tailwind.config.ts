@@ -17,6 +17,7 @@ export default {
         primary: "#3772F7",
         text: "#303441",
         text_sub: "#898989",
+        text_sub2: "#1F1F1F",
         sub: "#D9D9D9",
         sub2: "#F6F6F6",
         selectedoption_default: "rgba(88, 155, 255, 0.1)",

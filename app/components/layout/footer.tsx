@@ -1,6 +1,15 @@
+"use client";
+
 import React from "react";
+import { useRouter } from "next/navigation";
 
 const Footer = () => {
+  const router = useRouter();
+
+  const handleTermsClick = () => {
+    router.push("/terms");
+  };
+
   return (
     <footer className="w-full bg-bg_footer pt-20 pb-[70px]">
       <div className="max-w-[1040px] w-full mx-auto">
@@ -14,7 +23,9 @@ const Footer = () => {
               </p>
             </div>
             <div className="flex flex-row gap-1.5 text-xs text-sub font-extralight">
-              <p>이용약관</p>
+              <p className="cursor-pointer" onClick={handleTermsClick}>
+                이용약관
+              </p>
               <span>|</span>
               <p>개인정보처리방침</p>
             </div>

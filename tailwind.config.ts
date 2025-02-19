@@ -14,6 +14,8 @@ export default {
         foreground: "var(--foreground)",
         bg_footer: "#303441",
         bg_sub: "#ECF3FF",
+        bg_sub2: "#F6F8FA",
+        bg_sub3: "#F9FAFB",
         primary: "#3772F7",
         text: "#303441",
         text_sub: "#898989",

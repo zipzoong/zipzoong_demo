@@ -17,7 +17,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="flex justify-center items-center min-h-screen">
+    <div className="flex items-start justify-center min-h-screen">
       <ProfileCard
         profileImage={professional.profileImage}
         name={professional.name}
@@ -30,7 +30,7 @@ const Profile = () => {
         scores={[
           { label: "친절해요", value: 95, rank: 5, emoji: "😊" },
           { label: "믿음이 가요", value: 80, rank: 12, emoji: "💖" },
-          { label: "또 만나고 싶어요", value: 85, rank: 10, emoji: "🤝" }, // "손 잡는 이모티콘" 추가
+          { label: "또 만나고 싶어요", value: 85, rank: 10, emoji: "🤝" },
         ]}
         isAvailable={true}
         isLiked={false}

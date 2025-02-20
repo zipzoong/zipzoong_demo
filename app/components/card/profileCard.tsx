@@ -1,89 +1,141 @@
 import React, { useState } from "react";
-import { Heart } from "lucide-react"; // 채워진 하트 아이콘 사용
-import ColorBadge from "../badge/colorBadge";
-import PrimaryBtn from "../button/primaryBtn";
 import Image, { StaticImageData } from "next/image";
+import { MdFavorite } from "react-icons/md";
+import PrimaryLargeBtn from "../button/primaryLargeBtn";
+import ColorBadge from "../badge/colorBadge";
+import { tokenColorMapping } from "@/app/utils/badgeColor";
+import Alert from "../alert/alert";
 
 interface ProfileCardProps {
   profileImage: string | StaticImageData;
   name: string;
-  title: string;
-  portfolioCount: number;
-  introText: string;
-  specialty: string;
-  description: string;
+  jobTitle: string;
+  badges: { text: string; color: string }[];
+  reviewCount: number;
+  scores: { label: string; value: number; rank: number; emoji: string }[]; // value와 rank도 props로 전달
+  isAvailable: boolean;
+  isLiked: boolean;
 }
 
 const ProfileCard = ({
   profileImage,
   name,
-  title,
-  portfolioCount,
-  introText,
-  specialty,
-  description,
+  jobTitle,
+  badges,
+  reviewCount,
+  scores,
+  isAvailable,
+  isLiked: initialIsLiked,
 }: ProfileCardProps) => {
-  const [isLiked, setIsLiked] = useState<boolean>(true);
+  const [isLiked, setIsLiked] = useState(initialIsLiked);
+  const [showAlert, setShowAlert] = useState<boolean>(false);
 
-  // 하트 클릭 핸들러
   const handleLikeClick = () => {
     setIsLiked(!isLiked);
   };
 
+  const handleCopyClick = (textToCopy: string) => {
+    navigator.clipboard
+      .writeText(textToCopy)
+      .then(() => {
+        setShowAlert(true);
+
+        setTimeout(() => {
+          setShowAlert(false);
+        }, 1000);
+      })
+      .catch((error) => {
+        console.error("복사 실패", error);
+      });
+  };
+
   return (
-    <div className="flex items-start p-6 bg-white rounded-lg shadow-md">
-      {/* 프로필 이미지 및 하트 버튼 */}
-      <div className="relative w-32 h-32">
+    // <div className="p-4 w-[244px] bg-white shadow-md rounded-lg">
+    <div className="p-4 w-[244px]">
+      {/* 프로필 사진 */}
+      <div className="relative justify-self-center min-w-[180px] min-h-[180px] mb-3">
         <Image
           src={profileImage}
           alt={name}
-          width={128} // 원하는 고정된 크기
-          height={128} // 원하는 고정된 크기
-          className="rounded-full object-cover border-4 border-gray-200"
+          width={180}
+          height={180}
+          className="w-[180px] h-[180px] rounded-full object-cover border-2 border-border"
         />
+        {/* 하트 버튼 */}
         <div
-          className="absolute top-0 left-0 p-1 cursor-pointer text-red-500"
+          className="absolute bottom-0 right-0 p-1 cursor-pointer text-point"
           onClick={handleLikeClick}
         >
           {isLiked ? (
-            <Heart size={24} /> // 채워진 하트 아이콘
+            <MdFavorite size={32} className="text-point" />
           ) : (
-            <Heart size={24} className="text-gray-400" /> // 비어 있는 하트 아이콘
+            <MdFavorite size={32} className="text-border" />
           )}
         </div>
       </div>
 
-      {/* 프로필 텍스트 및 배지 */}
-      <div className="flex w-full flex-row justify-between">
-        <div className="flex flex-col">
-          <div className="flex justify-between items-center">
-            <div>
-              <div className="text-2xl font-semibold">{name}</div>
-              <div className="text-sm text-gray-500">{title}</div>
-              <div className="text-sm text-blue-500 mt-1">
-                포트폴리오 {portfolioCount}개
-              </div>
-            </div>
-          </div>
-          <div className="text-sm text-gray-500 mt-2">{specialty}</div>
-          <div className="text-sm text-gray-600 mt-2">{description}</div>
-        </div>
+      {/* 이름 및 직업 */}
+      <h2 className="text-center font-bold text-lg mt-2">{name}</h2>
+      <p className="text-center text-gray-500 mt-1">{jobTitle}</p>
 
-        {/* 배지와 버튼을 오른쪽에 배치 */}
-        <div className="flex flex-col justify-between text-end">
-          <p>후기 00건</p>
-          <div>
-            <div className="flex gap-2">
-              <ColorBadge text="1인 가구 전문가" color="C_TOKEN_3" />
-              <ColorBadge text="대표" color="C_TOKEN_2" />
-            </div>
-            <PrimaryBtn
-              text="자세히 보기"
-              onClick={() => alert("자세히 보기 클릭")}
-            />
-          </div>
-        </div>
+      {/* 배지 */}
+      <div className="flex justify-center gap-2 mt-3">
+        {badges.map((badge, index) => (
+          <ColorBadge
+            key={index}
+            text={badge.text}
+            color={badge.color as keyof typeof tokenColorMapping}
+            border="rounded"
+          />
+        ))}
       </div>
+
+      {/* 후기 수 */}
+      <p className="text-center text-text_sub mt-2 text-body4_r">
+        후기 {reviewCount}건
+      </p>
+
+      {/* 고정된 점수 항목 (믿음이 가요, 친절해요) */}
+      <div className="mt-8 space-y-3">
+        {scores.map((score, index) => (
+          <div key={index} className="flex flex-col justify-between gap-0.5">
+            <div className="flex  justify-between">
+              <span className="text-body3_m text-text_sub">
+                {score.label} {score.emoji}
+              </span>
+              <span className="text-body4_r text-primary">
+                (상위 {score.rank}%)
+              </span>
+            </div>
+
+            <div className="w-full bg-disable rounded-full h-2">
+              <div
+                className="h-2 bg-primary rounded-full"
+                style={{ width: `${score.value}%` }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* 버튼 */}
+      <div className="mt-10 flex flex-col items-center space-y-3">
+        <div
+          className={`px-5 py-[11px] rounded-md text-h4_sb w-full text-center
+       text-primary border border-primary bg-selectedoption_default cursor-pointer`}
+          onClick={() => {
+            handleCopyClick("010 - 0204 - 5679");
+          }}
+        >
+          010 - 0204 - 5679
+        </div>
+        <PrimaryLargeBtn
+          text={"후기 작성"}
+          onClick={() => {}}
+          className="w-full"
+        />
+      </div>
+      {showAlert && <Alert message="전화번호가 복사되었습니다!" />}
     </div>
   );
 };

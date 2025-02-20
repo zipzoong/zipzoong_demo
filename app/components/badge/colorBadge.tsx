@@ -1,18 +1,21 @@
-import { tokenColorMapping } from "@/app/utils/badgeColor"; // tokenColorMapping을 임포트
+import { tokenColorMapping } from "@/app/utils/badgeColor";
 import React from "react";
 
 interface ColorBadgeProps {
   text: string;
-  color: keyof typeof tokenColorMapping; // 색상 키를 받아옵니다.
+  color: keyof typeof tokenColorMapping;
+  border?: "basic" | "rounded";
 }
 
-const ColorBadge = ({ text, color }: ColorBadgeProps) => {
+const ColorBadge = ({ text, color, border = "basic" }: ColorBadgeProps) => {
   const colorStyles = tokenColorMapping[color];
 
   return (
     <div className="flex items-center text-center">
       <div
-        className={`rounded-sm text-[13px] font-medium py-[3px] px-2 
+        className={`${
+          border === "basic" ? "rounded-sm" : "rounded-2xl"
+        } text-[13px] font-medium py-1 px-3
             ${colorStyles.bg} ${colorStyles.text} whitespace-nowrap`}
       >
         {text}

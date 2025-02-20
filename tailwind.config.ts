@@ -34,6 +34,7 @@ export default {
         text_sub: "#898989",
         text_sub2: "#1F1F1F",
         text_sub3: "#7D8595",
+        text_sub4: "#4B4F52",
         sub: "#D9D9D9",
         sub2: "#F6F6F6",
         sub3: "#B3B3B3",

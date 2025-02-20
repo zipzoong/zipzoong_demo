@@ -12,7 +12,7 @@ interface ProfileCardProps {
   jobTitle: string;
   badges: { text: string; color: string }[];
   reviewCount: number;
-  scores: { label: string; value: number; rank: number; emoji: string }[]; // value와 rank도 props로 전달
+  scores: { label: string; value: number; rank: number; emoji: string }[];
   isAvailable: boolean;
   isLiked: boolean;
 }
@@ -51,7 +51,7 @@ const ProfileCard = ({
 
   return (
     // <div className="p-4 w-[244px] bg-white shadow-md rounded-lg">
-    <div className="p-4 w-[244px]">
+    <div className="p-4 w-[244px] ">
       {/* 프로필 사진 */}
       <div className="relative justify-self-center min-w-[180px] min-h-[180px] mb-3">
         <Image

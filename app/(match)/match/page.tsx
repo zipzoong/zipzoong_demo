@@ -42,7 +42,7 @@ const MatchPage = () => {
   };
 
   return (
-    <div className="bg-bg_sub2 py-12">
+    <div className="py-12">
       <Image
         src={banner}
         alt="banner"

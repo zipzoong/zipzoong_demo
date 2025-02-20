@@ -1,28 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import MatchLeftMenu from "@/app/components/menu/matchLeftMenu";
-import ProfileCard from "@/app/components/card/profileCard";
-import test01 from "@/app/image/test/test1.png";
-import test02 from "@/app/image/test/test2.png";
+import banner from "@/app/image/match/banner.svg";
 
-const professionals = [
-  {
-    id: 1,
-    name: "{중개사명} 중개사",
-    title: "자기소개 작성(20자제한)",
-    description: "인문학 청소 중 가장 정책에 적합한...",
-    img: test01,
-  },
-  {
-    id: 2,
-    name: "홍길동 중개사",
-    title: "자기소개 작성(20자제한)",
-    description: "인문학 청소 중 가장 정책에 적합한...",
-    img: test02,
-  },
-];
+import Image from "next/image";
+import { PROFESSIONALS } from "@/app/data/match";
+import Pagination from "@/app/components/pagination/pagination";
+import MatchProfileCard from "@/app/components/card/matchProfileCard";
 
 const categories = [
   "아파트",
@@ -43,84 +28,54 @@ const categories = [
 ];
 
 const MatchPage = () => {
-  const [activeCategory, setActiveCategory] = useState("1인 가구 전문가");
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [activeCategory, setActiveCategory] =
+    useState<string>("1인 가구 전문가");
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const totalPages = 3;
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   const handleCategoryClick = (category: string) => {
     setActiveCategory(category);
   };
 
-  const nextSlide = () => {
-    if (currentIndex < professionals.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
-
-  const prevSlide = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
-
   return (
-    <div className="bg-bg_sub3 py-12">
-      <div className="max-w-[1040px] mx-auto flex">
+    <div className="bg-bg_sub2 py-12">
+      <Image
+        src={banner}
+        alt="banner"
+        height={100}
+        className="w-full max-w-[1040px] mx-auto"
+      />
+      <div className="max-w-[1040px] mx-auto flex mt-8">
         {/* Left Side Menu */}
-        <MatchLeftMenu
-          categories={categories}
-          activeCategory={activeCategory}
-          onCategoryClick={handleCategoryClick}
-        />
+        <div className="flex flex-col">
+          <MatchLeftMenu
+            categories={categories}
+            activeCategory={activeCategory}
+            onCategoryClick={handleCategoryClick}
+          />
+        </div>
 
         {/* Main Content */}
-        <div className="w-full ml-6">
-          {/* Title and Filter */}
-          <div className="flex justify-between items-center mb-8">
-            <h1 className="font-thin text-[32px]">
-              클린한 부동산 생활 솔루션 집중
-            </h1>
-            <div className="flex gap-4">
-              <button className="px-4 py-2 bg-blue-500 text-white rounded-lg">
-                1인 가구 전문가
-              </button>
-              <button className="px-4 py-2 bg-gray-200 text-black rounded-lg">
-                2인 가구 전문가
-              </button>
-            </div>
-          </div>
-
-          {/* List of Professionals */}
+        <div className="w-full ml-6 mt-5">
           <div className="space-y-6">
-            {professionals.map((professional) => (
-              <ProfileCard
+            {PROFESSIONALS.map((professional) => (
+              <MatchProfileCard
                 key={professional.id}
-                profileImage={professional.img}
-                name={professional.name}
-                title={professional.title}
-                portfolioCount={0} // 포트폴리오 수는 고정값으로 설정하거나 수정 가능
-                introText={professional.description}
-                specialty={activeCategory}
-                description={professional.description}
+                professional={professional}
               />
             ))}
           </div>
 
           {/* Pagination or Navigation */}
-          <div className="mt-8 flex justify-center">
-            <button
-              className="p-2 bg-white rounded-full shadow-md"
-              onClick={prevSlide}
-            >
-              <ChevronLeft className="w-6 h-6 text-gray-700" />
-            </button>
-            <span className="mx-4 text-gray-700">Page 1 of 3</span>
-            <button
-              className="p-2 bg-white rounded-full shadow-md"
-              onClick={nextSlide}
-            >
-              <ChevronRight className="w-6 h-6 text-gray-700" />
-            </button>
-          </div>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
         </div>
       </div>
     </div>

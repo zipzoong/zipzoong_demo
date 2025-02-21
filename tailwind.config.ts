@@ -39,6 +39,7 @@ export default {
         sub2: "#F6F6F6",
         sub3: "#B3B3B3",
         point: "#ff6e6e",
+        star: "#FDB528",
         // selectedoption_default: "rgba(88, 155, 255, 0.1)",
         // selectedoption_hover: "rgba(88, 155, 255, 0.2)",
         // selectedoption_pressed: "rgba(88, 155, 255, 0.26)",
@@ -48,7 +49,8 @@ export default {
         selectedoption_pressed: "rgba(52, 109, 201, 0.26)",
         selectedoption_border: "rgba(52, 109, 201, 0.7)",
 
-        token_bg: "rgba(166, 166, 166, 0.7)",
+        token_bg: "rgba(166, 166, 166, 0.1)",
+        token_bg2: "rgba(166, 166, 166, 0.5)",
         token_1: "#FA6B48",
         token_1_bg: "rgba(250, 107, 72, 0.1)",
         token_2: "#FDB528",
@@ -92,8 +94,10 @@ export default {
         body1_sb: ["14px", { fontWeight: 600, lineHeight: "21px" }],
         body2_r: ["14px", { fontWeight: 400, lineHeight: "21px" }],
         body2_m: ["14px", { fontWeight: 500, lineHeight: "21px" }],
+        body2_sb: ["14px", { fontWeight: 600, lineHeight: "21px" }],
         body3_r: ["13px", { fontWeight: 400, lineHeight: "18px" }],
         body3_m: ["13px", { fontWeight: 500, lineHeight: "19.5px" }],
+        body3_sb: ["13px", { fontWeight: 600, lineHeight: "19.5px" }],
         body4_r: ["11px", { fontWeight: 400 }],
 
         mobile_h1_large: ["28px", { fontWeight: 700, lineHeight: "42px" }],

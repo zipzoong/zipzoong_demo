@@ -49,7 +49,7 @@ const Pagination: React.FC<PaginationProps> = ({
           onClick={() => onPageChange(page)}
           className={`px-2.5 py-1 rounded-full text-sm font-semibold transition ${
             page === currentPage
-              ? "bg-token_bg text-text_sub2"
+              ? "bg-token_bg2 text-text_sub4"
               : "text-text_sub hover:bg-gray-100"
           }`}
         >

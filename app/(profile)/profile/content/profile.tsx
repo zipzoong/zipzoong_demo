@@ -1,3 +1,5 @@
+"use client";
+
 import ProfileCard from "@/app/components/card/profileCard";
 import { useSearchParams } from "next/navigation";
 import { PROFESSIONALS } from "@/app/data/match";

@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import MatchLeftMenu from "@/app/components/menu/matchLeftMenu";
 import banner from "@/app/image/match/banner.svg";
-
 import Image from "next/image";
 import { PROFESSIONALS } from "@/app/data/match";
 import Pagination from "@/app/components/pagination/pagination";
@@ -28,8 +27,8 @@ const categories = [
 ];
 
 const MatchPage = () => {
-  const [activeCategory, setActiveCategory] =
-    useState<string>("1인 가구 전문가");
+  // 첫 번째 카테고리가 기본으로 선택되도록 초기화
+  const [activeCategory, setActiveCategory] = useState<string>(categories[0]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const totalPages = 3;
 

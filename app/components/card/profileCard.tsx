@@ -75,8 +75,8 @@ const ProfileCard = ({
       </div>
 
       {/* 이름 및 직업 */}
-      <h2 className="text-center font-bold text-lg mt-2">{name}</h2>
-      <p className="text-center text-gray-500 mt-1">{jobTitle}</p>
+      <h2 className="text-center text-text text-h4 mt-2">{name}</h2>
+      <p className="text-center text-text_sub3 text-body3_r">{jobTitle}</p>
 
       {/* 배지 */}
       <div className="flex justify-center gap-2 mt-3">
@@ -91,12 +91,12 @@ const ProfileCard = ({
       </div>
 
       {/* 후기 수 */}
-      <p className="text-center text-text_sub mt-2 text-body4_r">
+      {/* <p className="text-center text-text_sub mt-2 text-body4_r">
         후기 {reviewCount}건
-      </p>
+      </p> */}
 
       {/* 고정된 점수 항목 (믿음이 가요, 친절해요) */}
-      <div className="mt-8 space-y-3">
+      <div className="mt-16 space-y-3">
         {scores.map((score, index) => (
           <div key={index} className="flex flex-col justify-between gap-0.5">
             <div className="flex  justify-between">

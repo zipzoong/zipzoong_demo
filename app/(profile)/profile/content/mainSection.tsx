@@ -38,7 +38,23 @@ const MainSection = () => {
             phoneNumber="00-0000-0000"
             address="서울특별시 서초구 서초대로 00길 00, 0000호"
           />
+          <div className="flex justify-between items-center px-1 mb-3">
+            <h2 className="text-h2 font-semibold mb-2 text-text_sub2">
+              포토폴리오
+            </h2>
+            <p className="text-body3_m text-text_sub cursor-pointer">
+              전체보기
+            </p>
+          </div>
           <PortfolioSection />
+          <div className="flex justify-between items-center px-1 mb-3 mt-10">
+            <h2 className="text-h2 font-semibold mb-2 text-text_sub2">
+              고객 리뷰
+            </h2>
+            <p className="text-body3_m text-text_sub cursor-pointer">
+              전체보기
+            </p>
+          </div>
           <ReviewSection />
         </>
       )}

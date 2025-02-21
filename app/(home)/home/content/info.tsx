@@ -17,14 +17,14 @@ const infoCards = [
 
 const Info = () => {
   return (
-    <div className="flex w-full bg-bg_sub py-[100px]">
+    <div className="flex w-full bg-bg_sub py-20">
       <div className="max-w-[1040px] mx-auto">
         {/* 제목 및 설명 */}
         <div className="flex flex-col items-start gap-3 mb-10">
-          <h1 className="font-thin text-[32px]">
+          <h1 className="text-h1_s">
             내게 필요한 전문가들이 모두 모여 있는 곳!
           </h1>
-          <p className="text-[18px] font-normal">
+          <p className="text-h3">
             복잡하고 어려운 집을 찾는 과정, 집플과 함께 하세요
           </p>
         </div>

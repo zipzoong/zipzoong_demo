@@ -1,5 +1,5 @@
-import Image, { StaticImageData } from "next/image";
 import React from "react";
+import Image, { StaticImageData } from "next/image";
 import { FaStar, FaRegStar } from "react-icons/fa";
 
 interface ReviewProps {
@@ -8,14 +8,16 @@ interface ReviewProps {
   title: string;
   description: string;
   rating: number;
+  date: string;
 }
 
-const CustomerReview = ({
+const ReviewItem = ({
   name,
   imageUrl,
   title,
   description,
   rating,
+  date,
 }: ReviewProps) => {
   const stars = Array(5)
     .fill(false)
@@ -23,8 +25,9 @@ const CustomerReview = ({
 
   return (
     <div
-      className="flex flex-row w-full gap-2.5 bg-white border rounded-lg p-6 max-w-lg mx-auto
-    shadow-sm hover:shadow-md cursor-pointer transition-shadow duration-300 mb-1 border-border"
+      className="flex items-start px-4 pt-0 pb-6 border-b-2 border-border gap-5 cursor-pointer"
+      //   className="flex flex-row w-full gap-2.5 bg-white border rounded-lg p-6 max-w-lg mx-auto
+      // shadow-sm hover:shadow-md cursor-pointer transition-shadow duration-300 mb-1 border-border"
     >
       <div className="flex flex-col gap-3">
         <div className="flex flex-row items-center gap-3.5">
@@ -56,17 +59,18 @@ const CustomerReview = ({
             </div>
           </div>
         </div>
+        <p className="text-body4_r text-sub3">{date}</p>
 
         {/* Title and Description */}
-        {/* <div className=""> */}
-        {/* <h3 className="text-h3 text-text line-clamp-2">{title}</h3> */}
-        <p className="text-body2_r text-text_sub4 mt-1 line-clamp-2">
-          {description}
-        </p>
-        {/* </div> */}
+        <div className="">
+          <h3 className="text-h3 text-text line-clamp-2">{title}</h3>
+          <p className="text-body2_r text-text_sub4 mt-1 line-clamp-2">
+            {description}
+          </p>
+        </div>
       </div>
     </div>
   );
 };
 
-export default CustomerReview;
+export default ReviewItem;

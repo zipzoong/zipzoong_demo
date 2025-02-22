@@ -20,6 +20,7 @@ export const PROFESSIONALS = [
     portfolioCount: 0,
     reviewCount: 0,
     profileImage: test01,
+    rating: 4.5,
   },
   {
     id: "2",
@@ -31,6 +32,7 @@ export const PROFESSIONALS = [
     portfolioCount: 5,
     reviewCount: 2,
     profileImage: test02,
+    rating: 4,
   },
   {
     id: "3",
@@ -42,6 +44,7 @@ export const PROFESSIONALS = [
     portfolioCount: 21,
     reviewCount: 17,
     profileImage: test03,
+    rating: 3,
   },
   {
     id: "4",
@@ -53,6 +56,7 @@ export const PROFESSIONALS = [
     portfolioCount: 8,
     reviewCount: 4,
     profileImage: test04,
+    rating: 5,
   },
   {
     id: "5",
@@ -64,6 +68,7 @@ export const PROFESSIONALS = [
     portfolioCount: 12,
     reviewCount: 6,
     profileImage: test05,
+    rating: 2,
   },
   {
     id: "6",
@@ -75,6 +80,7 @@ export const PROFESSIONALS = [
     portfolioCount: 9,
     reviewCount: 3,
     profileImage: test06,
+    rating: 2,
   },
   {
     id: "7",
@@ -86,6 +92,7 @@ export const PROFESSIONALS = [
     portfolioCount: 15,
     reviewCount: 7,
     profileImage: test07,
+    rating: 4,
   },
   {
     id: "8",
@@ -97,6 +104,7 @@ export const PROFESSIONALS = [
     portfolioCount: 4,
     reviewCount: 1,
     profileImage: test08,
+    rating: 4,
   },
   {
     id: "9",
@@ -108,6 +116,7 @@ export const PROFESSIONALS = [
     portfolioCount: 22,
     reviewCount: 10,
     profileImage: test09,
+    rating: 4,
   },
   {
     id: "10",
@@ -119,5 +128,6 @@ export const PROFESSIONALS = [
     portfolioCount: 18,
     reviewCount: 8,
     profileImage: test10,
+    rating: 4,
   },
 ];

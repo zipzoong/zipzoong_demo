@@ -9,7 +9,14 @@ import {
 } from "react-icons/fa";
 import ReviewSection from "@/app/(profile)/profile/content/reviewSection";
 import PortfolioSection from "@/app/(profile)/profile/content/portfolioSection";
-import { MdLink } from "react-icons/md";
+import { MdLink, MdLocationOn } from "react-icons/md";
+import { useRouter } from "next/navigation";
+
+const scores = [
+  { label: "친절해요", value: 95, rank: 5, emoji: "😊" },
+  { label: "믿음이 가요", value: 80, rank: 12, emoji: "💖" },
+  { label: "또 만나고 싶어요", value: 85, rank: 10, emoji: "🤝" },
+];
 
 interface UserProfileProps {
   name: string;
@@ -50,11 +57,16 @@ const UserProfile: React.FC<UserProfileProps> = ({
   contactUrl,
   registrationInfo,
 }) => {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState("portfolio");
 
   const stars = Array(5)
     .fill(false)
     .map((_, index) => index < rating);
+
+  const handleAllClick = () => {
+    router.push(`/${activeTab}`);
+  };
 
   return (
     <div className="w-full max-w-[1040px] m-auto flex justify-center items-center mb-40">
@@ -105,16 +117,17 @@ const UserProfile: React.FC<UserProfileProps> = ({
                 <p className="w-20">전화번호:</p>
                 <p>{phoneNumber}</p>
               </div>
-              <div className="flex items-center">
-                <p className="w-20">주소:</p>
+              <div className="flex items-center gap-3">
+                {/* <p className="w-20">주소:</p> */}
+                <MdLocationOn className="text-gray-400" />
                 <p>{address}</p>
               </div>
             </div>
           </div>
         </div>
         {/* User Info */}
-        <div className="flex w-full gap-40 mt-5">
-          <div className="flex flex-col">
+        <div className="flex gap-8 mt-5">
+          <div className="flex flex-col w-[320px]">
             {/* Contact Section */}
             <div className="mb-6">
               <h3 className="text-text_sub2 text-h2">Contact</h3>
@@ -141,13 +154,37 @@ const UserProfile: React.FC<UserProfileProps> = ({
               </div>
             </div>
             {/* Work Section */}
-            <div className="border-t border-gray-200 pt-6 mb-6">
+            <div className="border-t border-gray-200 pt-6 mb-6 w-[320px]">
               <h3 className="text-text_sub2 text-h2">Work</h3>
               <p className="text-sm text-gray-700">
                 <strong>{primaryWork}</strong>
               </p>
               <p className="text-sm text-gray-600">{secondaryWork}</p>
             </div>
+            {/* <div className="mt-16 space-y-3">
+              {scores.map((score, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col justify-between gap-0.5"
+                >
+                  <div className="flex  justify-between">
+                    <span className="text-body3_m text-text_sub">
+                      {score.label} {score.emoji}
+                    </span>
+                    <span className="text-body4_r text-primary">
+                      (상위 {score.rank}%)
+                    </span>
+                  </div>
+
+                  <div className="w-full bg-disable rounded-full h-2">
+                    <div
+                      className="h-2 bg-primary rounded-full"
+                      style={{ width: `${score.value}%` }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div> */}
           </div>
 
           {/* Tabs Section */}
@@ -175,7 +212,10 @@ const UserProfile: React.FC<UserProfileProps> = ({
                   고객 리뷰
                 </button>
               </div>
-              <p className="text-body3_m text-text_sub cursor-pointer">
+              <p
+                className="text-body3_m text-text_sub cursor-pointer"
+                onClick={handleAllClick}
+              >
                 전체보기
               </p>
             </div>

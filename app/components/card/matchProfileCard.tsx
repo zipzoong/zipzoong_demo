@@ -60,7 +60,7 @@ const MatchProfileCard = ({ professional }: ProfileCardProps) => {
         {/* 왼쪽 텍스트 */}
         <div className="flex flex-col justify-between h-full">
           <div className="flex flex-row items-center gap-2 text-primary font-medium text-[13px]">
-            <p>{professional.area}</p> |{" "}
+            <p>{professional.area}</p> |
             <p>포토폴리오 {professional.portfolioCount}개</p>
           </div>
           <div className="flex flex-col">

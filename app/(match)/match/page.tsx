@@ -7,6 +7,7 @@ import Image from "next/image";
 import { PROFESSIONALS } from "@/app/data/match";
 import Pagination from "@/app/components/pagination/pagination";
 import MatchProfileCard from "@/app/components/card/matchProfileCard";
+import MatchList from "@/app/components/list/mtachList";
 
 const categories = [
   "아파트",
@@ -42,13 +43,13 @@ const MatchPage = () => {
 
   return (
     <div className="py-12">
-      <Image
+      {/* <Image
         src={banner}
         alt="banner"
         height={100}
         className="w-full max-w-[1040px] mx-auto"
-      />
-      <div className="max-w-[1040px] mx-auto flex mt-8">
+      /> */}
+      <div className="max-w-[1040px] mx-auto flex">
         {/* Left Side Menu */}
         <div className="flex flex-col">
           <MatchLeftMenu
@@ -60,14 +61,16 @@ const MatchPage = () => {
 
         {/* Main Content */}
         <div className="w-full ml-6 mt-5">
-          <div className="space-y-6">
+          <MatchList /> 
+
+          {/* <div className="space-y-6">
             {PROFESSIONALS.map((professional) => (
               <MatchProfileCard
                 key={professional.id}
                 professional={professional}
               />
             ))}
-          </div>
+          </div> */}
 
           {/* Pagination or Navigation */}
           <Pagination

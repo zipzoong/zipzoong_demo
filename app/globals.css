@@ -14,8 +14,17 @@
   }
 }
 
+@font-face {
+  font-family: "Pretendard";
+  src: url("/fonts/PretendardVariable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  /* color: var(--foreground); */
+  color: "#1F1F1F";
+  background: "#F9FAFB";
+  /* background: var(--background); */
+  font-family: "Pretendard", sans-serif;
 }

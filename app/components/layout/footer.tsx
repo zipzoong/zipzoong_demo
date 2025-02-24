@@ -11,18 +11,20 @@ const Footer = () => {
   };
 
   return (
-    <footer className="w-full bg-bg_footer pt-20 pb-[70px]">
-      <div className="max-w-[1040px] w-full mx-auto">
-        <div className="flex justify-between border-b border-sub pb-8">
+    <footer className="w-full bg-bg_footer pt-12 md:pt-20 pb-12 md:pb-[70px]">
+      <div className="w-full mx-auto max-w-screen-sm sm:max-w-screen-md md:max-w-screen-lg lg:max-w-screen-lx px-4 md:px-5">
+        <div className="flex flex-col md:flex-row justify-between border-b border-sub pb-6 md:pb-8">
           {/* 회사 소개 */}
-          <div className="flex flex-col gap-20">
+          <div className="flex flex-col gap-10 md:gap-20">
             <div>
-              <h2 className="text-xl text-white font-bold">Zipple</h2>
-              <p className="text-sm font-semibold text-sub mt-2 leading-relaxed">
+              <h2 className="text-[18px] md:text-xl text-white font-bold">
+                Zipple
+              </h2>
+              <p className="text-mobile_body2_sb md:text-body1_sb text-sub mt-2 leading-relaxed">
                 번거로운 이사 절차를 한방에, 위스돔 주거 이동 솔루션 ‘집플래너’
               </p>
             </div>
-            <div className="flex flex-row gap-1.5 text-xs text-sub font-extralight">
+            <div className="flex flex-row gap-1.5 text-10 md:text-xs text-sub font-extralight">
               <p className="cursor-pointer" onClick={handleTermsClick}>
                 이용약관
               </p>
@@ -33,7 +35,7 @@ const Footer = () => {
 
           <div className="flex flex-row gap-10">
             {/* 집플 정보 */}
-            <div className="flex flex-col gap-4">
+            <div className="md:flex hidden flex-col gap-4">
               <h3 className="text-base font-semibold text-white">집플 정보</h3>
               <ul className="flex flex-col gap-2.5 text-xs text-white">
                 <p>서비스 소개</p>
@@ -44,7 +46,7 @@ const Footer = () => {
               </ul>
             </div>
             {/* 고객 안내 */}
-            <div className="flex flex-col gap-4">
+            <div className="md:flex hidden flex-col gap-4">
               <h3 className="text-base font-semibold text-white">고객 안내</h3>
               <ul className="flex flex-col gap-2.5 text-xs text-white">
                 <p>공지사항</p>
@@ -53,7 +55,7 @@ const Footer = () => {
               </ul>
             </div>
             {/* 고객 센터 */}
-            <div className="flex flex-col gap-4">
+            <div className="md:flex hidden flex-col gap-4 mt-5 md:mt-0">
               <h3 className="text-base font-semibold text-white">고객 센터</h3>
               <ul className="flex flex-col gap-2.5 text-xs text-white">
                 <p className="text-base">02-6925-3400</p>
@@ -68,7 +70,7 @@ const Footer = () => {
         </div>
 
         {/* 하단 회사 정보 */}
-        <div className="mt-8 pt-4 font-extralight text-start text-xs text-sub">
+        <div className="mt-5 pt-2 md:mt-8 md:pt-4 font-extralight text-start text-10 md:text-xs text-sub">
           <p>
             집플 테크리티 | 대표 오준영 | 서울시 서초구 서초대로 50길 75, 401호
           </p>

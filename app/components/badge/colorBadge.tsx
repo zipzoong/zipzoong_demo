@@ -15,7 +15,7 @@ const ColorBadge = ({ text, color, border = "basic" }: ColorBadgeProps) => {
       <div
         className={`${
           border === "basic" ? "rounded-sm" : "rounded-2xl"
-        } text-[13px] font-medium py-1 px-3
+        } text-mobile_body4_r md:text-body3_m font-medium md:py-1 md:px-3 px-2 py-0.5
             ${colorStyles.bg} ${colorStyles.text} whitespace-nowrap`}
       >
         {text}

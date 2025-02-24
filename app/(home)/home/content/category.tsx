@@ -30,11 +30,14 @@ const categoryList = [
 
 const CategoryList: React.FC = () => {
   return (
-    <div className="pt-20 pb-20 max-w-[1040px] mx-auto">
-      <h1 className="flex justify-start font-thin text-[24px] mb-7">
+    <div className="md:py-20 py-10 max-w-[1040px] mx-auto md:px-5 px-4">
+      <h1 className="flex justify-start text-mobile_h2_s md:text-h1_s mb-7">
         어떤 중개사를 찾고 계신가요?
       </h1>
-      <div className="grid grid-cols-6">
+      <div
+        className="grid grid-cols-2 sm:grid-cols-3 sm_md:grid-cols-4
+      md_md:grid-cols-6 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-6 gap-4"
+      >
         {categoryList.map((category, index) => (
           <CategoryItem
             key={index}

@@ -50,7 +50,7 @@ const PortfolioCard = ({ data }: CardProps) => {
           className="flex gap-1.5 md:flex-col cursor-pointer pb-3"
           onClick={() => handleRouter(item.id)}
         >
-          <div className="relative min-w-[220px] md:w-full aspect-square">
+          <div className="relative lg:min-w-[200px] w-full aspect-square">
             <Image
               src={item.imageUrl}
               alt={item.title}

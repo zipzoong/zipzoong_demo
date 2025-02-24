@@ -4,7 +4,7 @@ import MatchCard from "../card/matchCard";
 const MatchList = () => {
   return (
     <>
-      <div className="space-y-2">
+      <div className="md:space-y-2">
         {PROFESSIONALS.map((professional) => (
           <MatchCard key={professional.id} professional={professional} />
         ))}

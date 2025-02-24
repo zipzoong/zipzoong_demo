@@ -17,20 +17,20 @@ const infoCards = [
 
 const Info = () => {
   return (
-    <div className="flex w-full bg-bg_sub py-20">
-      <div className="max-w-[1040px] mx-auto">
+    <div className="flex w-full bg-bg_sub py-12 md:py-20">
+      <div className="max-w-[1040px] mx-auto md:px-5 px-4">
         {/* 제목 및 설명 */}
-        <div className="flex flex-col items-start gap-3 mb-10">
-          <h1 className="text-h1_s">
-            내게 필요한 전문가들이 모두 모여 있는 곳!
+        <div className="flex flex-col items-start gap-1 md:gap-3 mb-6 md:mb-10 text-center md:text-left">
+          <h1 className="text-mobile_h2_s md:text-h1_s">
+            내게 필요한 전문가들이 한 곳에!
           </h1>
-          <p className="text-h3">
-            복잡하고 어려운 집을 찾는 과정, 집플과 함께 하세요
+          <p className="text-h4 md:text-h3">
+            복잡하고 어려운 집을 찾는 과정, 집플과 함께 하세요!
           </p>
         </div>
 
-        {/* 카드들 */}
-        <div className="flex gap-5 justify-center">
+        {/* 카드들 (반응형) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 justify-center">
           {infoCards.map((card, index) => (
             <InfoCard
               key={index}

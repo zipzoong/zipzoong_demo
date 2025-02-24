@@ -6,13 +6,6 @@ import Pagination from "@/app/components/pagination/pagination";
 import ReviewItem from "@/app/components/review/reviewItem";
 
 const Review = () => {
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const totalPages = 3;
-
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-
   return (
     <>
       <div className="w-full">
@@ -29,13 +22,6 @@ const Review = () => {
             />
           ))}
         </div>
-
-        {/* Pagination or Navigation */}
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
       </div>
     </>
   );

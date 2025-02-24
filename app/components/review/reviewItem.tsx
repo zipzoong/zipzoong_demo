@@ -29,7 +29,7 @@ const ReviewItem = ({
       //   className="flex flex-row w-full gap-2.5 bg-white border rounded-lg p-6 max-w-lg mx-auto
       // shadow-sm hover:shadow-md cursor-pointer transition-shadow duration-300 mb-1 border-border"
     >
-      <div className="flex flex-col gap-3">
+      <div className="flex w-full flex-col gap-3">
         <div className="flex flex-row items-center gap-3.5">
           {/* 프로필 이미지 */}
           <div className="mb-0 min-w-[48px] min-h-[48px]">
@@ -41,28 +41,29 @@ const ReviewItem = ({
               className="w-12 h-12 rounded-full object-cover"
             />
           </div>
-
-          {/* 텍스트 및 별 */}
-          <div className="flex flex-col">
-            <div className="flex flex-row items-center gap-1.5">
-              <p className="text-body1_m font-semibold text-text">{name}</p>
-              <p className="text-body4_r text-text_sub3">고객님의 리뷰</p>
+          <div className="flex flex-row w-full justify-between">
+            {/* 텍스트 및 별 */}
+            <div className="flex flex-col gap-1">
+              <div className="flex flex-row items-center gap-1.5">
+                <p className="text-body1_m font-semibold text-text">{name}</p>
+                <p className="text-body4_r text-text_sub3">고객님의 리뷰</p>
+              </div>
+              <div className="flex gap-1">
+                {stars.map((isFilled, index) =>
+                  isFilled ? (
+                    <FaStar key={index} className="text-star" />
+                  ) : (
+                    <FaRegStar key={index} className="text-star" />
+                  )
+                )}
+              </div>
             </div>
-            <div className="flex gap-1">
-              {stars.map((isFilled, index) =>
-                isFilled ? (
-                  <FaStar key={index} className="text-star" />
-                ) : (
-                  <FaRegStar key={index} className="text-star" />
-                )
-              )}
-            </div>
+            <p className="text-body4_r text-sub3">{date}</p>
           </div>
         </div>
-        <p className="text-body4_r text-sub3">{date}</p>
 
         {/* Title and Description */}
-        <div className="">
+        <div className="flex flex-col mt-6">
           <h3 className="text-h3 text-text line-clamp-2">{title}</h3>
           <p className="text-body2_r text-text_sub4 mt-1 line-clamp-2">
             {description}

@@ -22,8 +22,8 @@ const BasicBadge = ({ status, text }: BadgeProps) => {
   return (
     <div className="flex items-center text-center">
       <div
-        className={`rounded text-[13px] font-medium py-[3px] 
-            w-[62px] md:py-1 md:w-[64px] ${getBadgeStyle()}`}
+        className={`rounded text-mobile_body4_r md:text-body3_m py-[3px] 
+            w-[54px] md:py-1 md:w-[64px] ${getBadgeStyle()}`}
       >
         {text}
       </div>

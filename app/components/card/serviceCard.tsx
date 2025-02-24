@@ -10,21 +10,19 @@ interface ServiceCardProps {
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ image, title, tags }) => {
   return (
-    <div className="bg-white w-[333px] flex flex-col">
-      {/* 배경 이미지 */}
-      <div className="w-full h-[200px] overflow-hidden rounded-lg">
+    <div className="bg-white w-[241px] md:w-[333px] flex flex-col">
+      <div className="w-full md:h-[200px] overflow-hidden rounded-lg">
         <Image
           src={image}
           alt={title}
-          width={333} // 부모 컨테이너 크기와 동일하게 설정
-          height={200}
-          className="w-full h-full object-cover"
+          width={241}
+          height={150}
+          className="md:w-[333px] md:h-[200px] object-cover"
         />
       </div>
 
-      <div className="flex flex-row justify-between items-center pt-4">
-        {/* 태그 */}
-        <div className="flex gap-2">
+      <div className="flex flex-row justify-between items-center px-0.5 pt-2 md:pt-4">
+        <div className="flex gap-1 md:gap-2">
           {tags.map((tag, index) => (
             <BasicBadge
               key={index}
@@ -35,7 +33,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ image, title, tags }) => {
         </div>
 
         {/* 서비스 제목 */}
-        <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+        <h3 className="text-mobile_h4 md:text-h3_r text-text">{title}</h3>
       </div>
     </div>
   );

@@ -1,13 +1,9 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
 import { PORTFOLIO_DATA } from "@/app/data/portfolio";
 import PortfolioCard from "@/app/components/card/portfolioCard";
 
 const Portfolio = () => {
-  const searchParams = useSearchParams();
-  const id = searchParams.get("id");
-
   return (
     <>
       <div

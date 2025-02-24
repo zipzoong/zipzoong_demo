@@ -25,7 +25,7 @@ const ReviewCard = ({
 
   return (
     <div
-      className="flex flex-row w-full gap-2.5 bg-white border rounded-lg p-3 md:p-6 max-w-lg mx-auto
+      className="flex flex-row w-full gap-1.5 md:gap-2.5 bg-white border rounded-lg p-3 md:p-6 mx-auto
     shadow-sm hover:shadow-md cursor-pointer transition-shadow duration-300 mb-1 border-border"
     >
       <div className="flex w-full flex-col md:gap-3 gap-2">

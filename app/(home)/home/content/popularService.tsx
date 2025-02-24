@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Shortcut from "@/app/components/card/shortcutCard";
 import ServiceCard from "@/app/components/card/serviceCard";
+import useResponsive from "@/app/hook/useResponsive";
 
-// 이미지 (Next.js에서 `default` 사용)
 import movingImage from "@/app/image/service/service_card01.svg";
 import lawyerImage from "@/app/image/service/service_card02.svg";
 import interiorImage from "@/app/image/service/service_card03.svg";
@@ -23,27 +23,25 @@ const services = [
 ];
 
 const PopularService = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const isMd = useResponsive("md");
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const itemsPerPage = 3;
-  const cardWidth = 333; // 카드 너비 (px)
-  const maxIndex = Math.ceil(services.length / itemsPerPage) - 1;
+  const cardWidth = 333;
+  const maxIndex = Math.max(0, services.length - itemsPerPage);
 
   const nextSlide = () => {
-    if (currentIndex < maxIndex) {
-      setCurrentIndex((prev) => prev + 1);
-    }
+    setCurrentIndex((prev) => Math.min(prev + 1, maxIndex));
   };
 
   const prevSlide = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prev) => prev - 1);
-    }
+    setCurrentIndex((prev) => Math.max(prev - 1, 0));
   };
 
   return (
-    <div className="pb-20 max-w-[1040px] mx-auto">
+    <div className="pb-20 max-w-[1040px] mx-auto px-4">
       {/* Shortcut Cards */}
-      <div className="flex flex-row gap-6">
+      <div className="flex flex-col md:flex-row gap-3 md:gap-6">
         <Shortcut
           color="blue"
           title="클린한 부동산 생활 솔루션, 집플"
@@ -59,13 +57,13 @@ const PopularService = () => {
       </div>
 
       {/* 타이틀 & 버튼 */}
-      <div className="flex justify-between items-center mt-16">
-        <h1 className="font-thin text-[24px]">
+      <div className="flex justify-between items-center mt-12 md:mt-16">
+        <h1 className={isMd ? "md:text-h1_s" : "text-mobile_h2_s"}>
           집플 인기 서비스
           <br />
           TOP5
         </h1>
-        <div className="flex gap-2 self-end">
+        <div className="hidden gap-2 self-end">
           <button
             onClick={prevSlide}
             className="p-2"
@@ -83,30 +81,42 @@ const PopularService = () => {
         </div>
       </div>
 
-      {/* 슬라이드 컨테이너 */}
-      <div
-        className="relative mt-6 overflow-hidden"
-        style={{ width: `${itemsPerPage * (cardWidth + 20)}px` }}
-      >
+      {/* md 이상: 캐러셀 / md 이하: 스크롤 */}
+      <div className="relative mt-1 md:mt-6 max-w-full overflow-hidden">
+        {/* md 이하: 가로 스크롤 */}
         <div
-          className="flex transition-transform duration-500 ease-in-out"
-          style={{
-            transform: `translateX(-${
-              currentIndex * (cardWidth + 20) * itemsPerPage
-            }px)`,
-            width: `${services.length * (cardWidth + 20)}px`,
-          }}
+          ref={scrollRef}
+          className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory 
+          md:space-x-4 space-x-2 no-scrollbar"
         >
           {services.map((service, index) => (
             <div
               key={index}
-              className="flex-shrink-0 mr-5"
+              className="snap-start md:flex-shrink-0"
               style={{ width: `${cardWidth}px` }}
             >
               <ServiceCard {...service} />
             </div>
           ))}
         </div>
+
+        {/* md 이상: 캐러셀 */}
+        {/* <div
+          className="hidden md:flex transition-transform duration-500 ease-in-out justify-start overflow-hidden"
+          style={{
+            transform: `translateX(-${currentIndex * (cardWidth + 20)}px)`,
+          }}
+        >
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 mr-5 last:mr-0"
+              style={{ width: `${cardWidth}px` }}
+            >
+              <ServiceCard {...service} />
+            </div>
+          ))}
+        </div> */}
       </div>
     </div>
   );

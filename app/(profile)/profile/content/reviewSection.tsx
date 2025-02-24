@@ -4,7 +4,7 @@ import { REVIEW } from "@/app/data/review";
 const ReviewSection = () => {
   return (
     <div>
-      <div className="grid grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-1 lg:gap-3">
         {REVIEW.slice(0, 4).map((review, index) => (
           <CustomerReview
             key={index}

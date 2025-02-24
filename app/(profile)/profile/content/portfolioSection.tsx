@@ -5,7 +5,7 @@ const PortfolioSection = () => {
   return (
     <div className="flex flex-col">
       <div
-        className="md:max-h-[700px] flex w-full flex-col gap-3 md:gap-4 md:flex-row md:flex-wrap
+        className="flex w-full flex-col gap-3 md:gap-4 md:flex-row md:flex-wrap
           md:grid md:grid-cols-2 lg:grid-cols-3"
       >
         <PortfolioCard data={PORTFOLIO_DATA.slice(0, 6)} />

@@ -113,6 +113,8 @@ export default {
 
         mobile_h1_large: ["28px", { fontWeight: 700, lineHeight: "42px" }],
         mobile_h2_large: ["22px", { fontWeight: 600, lineHeight: "33px" }],
+        mobile_h1_s: ["28px", { fontWeight: 100, lineHeight: "48px" }],
+        mobile_h2_s: ["22px", { fontWeight: 100, lineHeight: "48px" }],
 
         mobile_h1_contents_title: ["18px", { fontWeight: 600 }],
         mobile_h1_sb: ["14px", { fontWeight: 600, lineHeight: "21px" }],
@@ -135,7 +137,9 @@ export default {
       },
       screens: {
         sm: "360px",
+        sm_md: "400px",
         md: "768px",
+        md_lg: "900px",
         lg: "1024px",
         lx: "1280px",
         lx2: "1440px",

@@ -20,20 +20,20 @@ const ReviewPage = () => {
   };
 
   return (
-    <div className="flex flex-col max-w-[1040px] mx-auto gap-8 mt-12 mb-20">
+    <div className="flex flex-col gap-4 mt-8 mb-12 md:gap-8 md:mt-12 md:mb-20">
       <div className="flex justify-between items-center px-1 border-b pb-2">
-        <h2 className="text-h1_contents_title font-semibold mb-2 text-text_sub2">
+        <h2 className="text-mobile_h1_contents_title md:text-h1_contents_title mb-2 text-text_sub2">
           Jeremy Rose님의 고객 후기
         </h2>
         <p
-          className="text-body3_m text-text_sub cursor-pointer"
+          className="text-mobile_body4_r md:text-body3_m text-text_sub cursor-pointer"
           onClick={handleGoBack}
         >
           돌아가기
         </p>
       </div>
       <div className="w-full">
-        <div className="space-y-6">
+        <div className="md:space-y-6 space-y-4">
           {REVIEW.map((review, index) => (
             <ReviewCard
               key={index}

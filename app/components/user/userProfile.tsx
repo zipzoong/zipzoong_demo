@@ -191,7 +191,7 @@ const UserProfile: React.FC<UserProfileProps> = ({
                     activeTab === "portfolio"
                       ? "text-primary border-b-2 border-primary"
                       : "text-gray-600"
-                  } lg:text-h3_r md:text-h4 text-mobile_body3_m`}
+                  } lg:text-h3_r md:text-h4 text-mobile_body2_m`}
                   onClick={() => setActiveTab("portfolio")}
                 >
                   포트폴리오
@@ -201,14 +201,14 @@ const UserProfile: React.FC<UserProfileProps> = ({
                     activeTab === "reviews"
                       ? "text-primary border-b-2 border-primary"
                       : "text-gray-600"
-                  } lg:text-h3_r md:text-h4 text-mobile_body3_m`}
+                  } lg:text-h3_r md:text-h4 text-mobile_body2_m`}
                   onClick={() => setActiveTab("reviews")}
                 >
                   고객 리뷰
                 </button>
               </div>
               <p
-                className="md:text-body3_m text-8 text-text_sub cursor-pointer"
+                className="md:text-body3_m text-10 text-text_sub cursor-pointer"
                 onClick={handleAllClick}
               >
                 전체보기

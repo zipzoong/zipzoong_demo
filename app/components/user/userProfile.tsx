@@ -12,12 +12,6 @@ import PortfolioSection from "@/app/(profile)/profile/content/portfolioSection";
 import { MdLink, MdLocationOn } from "react-icons/md";
 import { useRouter } from "next/navigation";
 
-const scores = [
-  { label: "친절해요", value: 95, rank: 5, emoji: "😊" },
-  { label: "믿음이 가요", value: 80, rank: 12, emoji: "💖" },
-  { label: "또 만나고 싶어요", value: 85, rank: 10, emoji: "🤝" },
-];
-
 interface UserProfileProps {
   name: string;
   location: string;
@@ -69,46 +63,61 @@ const UserProfile: React.FC<UserProfileProps> = ({
   };
 
   return (
-    <div className="w-full max-w-[1040px] m-auto flex justify-center items-center mb-40">
-      <div className="w-full mt-12 flex flex-col justify-between h-full">
+    <div className="w-full flex justify-center items-center mb-40">
+      <div className="w-full flex flex-col justify-between h-full">
         {/* Profile Header */}
-        <div className="flex items-center mb-8">
-          <div className="w-80 h-80 rounded-lg overflow-hidden mr-6">
+        <div className="flex md:flex-row flex-col md:items-center md:mb-8">
+          <div className="lg:w-80 lg:h-80 md:w-64 md:h-64 md:max-h-80 md:max-w-80 max-h-56 max-w-56 rounded-lg overflow-hidden mr-6">
             <Image
               src={imageUrl}
               alt="Profile"
               className="w-full h-full object-cover"
             />
           </div>
-          <div className="flex flex-col h-80 py-1 justify-between">
+          <div className="flex flex-col lg:h-80 md:h-64 py-1 justify-between">
             <div>
-              <h1 className="text-h1_m text-text">{name}</h1>
-              <p className="text-body2_r text-gray-500">{description}</p>
+              <h1 className="mt-3 md:mt-0 md:text-h1_contents_title lg:text-h1_m text-mobile_h2_large text-text">
+                {name}
+              </h1>
+              <p className="text-mobile_body3_r md:text-body3_r lg:text-body2_r text-gray-500">
+                {description}
+              </p>
             </div>
-            <div className="flex flex-row items-center text-center mt-3 mb-5">
-              <div
-                className={`flex flex-row rounded-sm text-[13px] font-medium py-1 px-3
-        text-token_4 bg-token_4_bg whitespace-nowrap`}
-              >
-                <MdLink className="w-5 h-5 text-token_4" />
-                &nbsp;&nbsp;&nbsp;
-                <span>{contactUrl}</span>
-              </div>
+            <div
+              className="inline-flex rounded-sm md:text-body3_m items-center
+    text-token_4 bg-token_4_bg md:whitespace-nowrap overflow-hidden mt-3 md:mt-0
+    md:overflow-visible text-ellipsis text-mobile_body4_r py-1 px-2 md:px-3 max-w-fit"
+            >
+              <MdLink className="md:w-5 md:h-5 w-4 h-4 text-token_4 flex-shrink-0" />
+              &nbsp;&nbsp;&nbsp;
+              <span className="truncate md:whitespace-nowrap">
+                {contactUrl}
+              </span>
             </div>
+
             {/* Rating Section */}
-            <div>
-              <h3 className="text-text_sub2 text-h3_r mt-3">Ratings</h3>
-              <div className="flex space-x-1">
+            <div className="flex flex-col mt-6 mb-5 md:mt-0 md:mb-0">
+              <h3
+                className="text-mobile_h4_sb md:text-body1_m text-text_sub2 mb-1
+              lg:text-h3_r lg:mt-3"
+              >
+                Ratings
+              </h3>
+              <div className="flex space-x-1 md:text-body3_m lg:text-body1_m text-mobile_body4_r">
                 {stars.map((isFilled, index) =>
                   isFilled ? (
-                    <FaStar key={index} className="text-star text-h3" />
+                    <FaStar key={index} className="text-star" />
                   ) : (
-                    <FaRegStar key={index} className="text-star text-h3" />
+                    <FaRegStar key={index} className="text-star" />
                   )
                 )}
               </div>
             </div>
-            <div className="space-y-2 mt-6 mb-4 text-body2_m text-text_sub4">
+            <div
+              className="lg:space-y-2 space-y-1 lg:mt-6 lg:mb-4 text-mobile_body3_r
+               md:text-body3_m lg:text-body2_m text-text_sub4
+               border-b border-gray-200 pb-6 md:pb-0 md:border-none"
+            >
               <div className="flex items-center">
                 <p className="w-20">등록번호:</p>
                 <p>{registrationInfo}</p>
@@ -126,22 +135,28 @@ const UserProfile: React.FC<UserProfileProps> = ({
           </div>
         </div>
         {/* User Info */}
-        <div className="flex gap-8 mt-5">
-          <div className="flex flex-col w-[320px]">
+        <div className="flex flex-col md:flex-row gap-8 md:mt-5 mt-6">
+          <div className="flex flex-col md:w-[256px] lg:w-[320px]">
             {/* Contact Section */}
             <div className="mb-6">
-              <h3 className="text-text_sub2 text-h2">Contact</h3>
+              <h3 className="text-text_sub2 text-mobile_h4_sb md:text-h3 lg:text-h2 mb-1">
+                Contact
+              </h3>
               <div className="flex items-center space-x-4 mt-2">
                 <FaPhoneAlt className="text-primary" />
-                <p className="text-sm text-gray-700">{phoneNumber}</p>
+                <p className="text-mobile_body3_r md:text-body2_m text-gray-700">
+                  {phoneNumber}
+                </p>
               </div>
               <div className="flex items-center space-x-4 mt-2">
                 <FaEnvelope className="text-primary" />
-                <p className="text-sm text-gray-700">{email}</p>
+                <p className="text-mobile_body3_r md:text-body2_m text-gray-700">
+                  {email}
+                </p>
               </div>
               <div className="flex items-center space-x-4 mt-2">
                 <FaLink className="text-primary" />
-                <p className="text-sm text-gray-700">
+                <p className="text-mobile_body3_r md:text-body2_m text-gray-700">
                   <a
                     href={website}
                     target="_blank"
@@ -154,49 +169,29 @@ const UserProfile: React.FC<UserProfileProps> = ({
               </div>
             </div>
             {/* Work Section */}
-            <div className="border-t border-gray-200 pt-6 mb-6 w-[320px]">
-              <h3 className="text-text_sub2 text-h2">Work</h3>
-              <p className="text-sm text-gray-700">
+            <div className="border-t border-gray-200 pt-6 mb-6 md:w-[256px] lg:w-[320px]">
+              <h3 className="text-text_sub2 text-mobile_h4_sb md:text-h3 lg:text-h2 mb-1">
+                Work
+              </h3>
+              <p className="text-mobile_body3_r md:text-body2_m text-gray-700">
                 <strong>{primaryWork}</strong>
               </p>
-              <p className="text-sm text-gray-600">{secondaryWork}</p>
+              <p className="text-mobile_body3_r md:text-body2_m text-gray-600">
+                {secondaryWork}
+              </p>
             </div>
-            {/* <div className="mt-16 space-y-3">
-              {scores.map((score, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col justify-between gap-0.5"
-                >
-                  <div className="flex  justify-between">
-                    <span className="text-body3_m text-text_sub">
-                      {score.label} {score.emoji}
-                    </span>
-                    <span className="text-body4_r text-primary">
-                      (상위 {score.rank}%)
-                    </span>
-                  </div>
-
-                  <div className="w-full bg-disable rounded-full h-2">
-                    <div
-                      className="h-2 bg-primary rounded-full"
-                      style={{ width: `${score.value}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
-            </div> */}
           </div>
 
           {/* Tabs Section */}
-          <div className="">
-            <div className="flex items-start justify-between w-full">
-              <div className="flex space-x-6">
+          <div className="flex w-full flex-col mt-5 md:mt-0">
+            <div className="flex items-center md:items-start justify-between w-full">
+              <div className="flex md:space-x-6 space-x-4">
                 <button
                   className={`${
                     activeTab === "portfolio"
                       ? "text-primary border-b-2 border-primary"
                       : "text-gray-600"
-                  } text-lg font-medium`}
+                  } lg:text-h3_r md:text-h4 text-mobile_body3_m`}
                   onClick={() => setActiveTab("portfolio")}
                 >
                   포트폴리오
@@ -206,14 +201,14 @@ const UserProfile: React.FC<UserProfileProps> = ({
                     activeTab === "reviews"
                       ? "text-primary border-b-2 border-primary"
                       : "text-gray-600"
-                  } text-lg font-medium`}
+                  } lg:text-h3_r md:text-h4 text-mobile_body3_m`}
                   onClick={() => setActiveTab("reviews")}
                 >
                   고객 리뷰
                 </button>
               </div>
               <p
-                className="text-body3_m text-text_sub cursor-pointer"
+                className="md:text-body3_m text-8 text-text_sub cursor-pointer"
                 onClick={handleAllClick}
               >
                 전체보기

@@ -24,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
   };
 
   return (
-    <div className="w-full bg-white h-[72px] shadow-md flex justify-center px-4 md:px-6 lg:px-8">
+    <div className="w-full bg-white md:h-16 shadow-md flex justify-center px-4 md:px-6 lg:px-8">
       <header className="w-full max-w-[1440px] flex justify-between items-center py-3 md:py-4">
         {/* 로고 및 네비게이션 */}
         <div className="flex items-center gap-8 md:gap-12 w-2/3">
@@ -99,7 +99,7 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: isMenuOpen ? 1 : 0, y: isMenuOpen ? 0 : -10 }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
-          className={`absolute top-16 left-0 w-full bg-white shadow-md flex flex-col items-center 
+          className={`absolute top-12 left-0 w-full bg-white shadow-md flex flex-col items-center 
               py-5 gap-5 md:hidden text-body2_r border-t border-gray-200 ${
                 isMenuOpen ? "block" : "hidden"
               }`}

@@ -8,6 +8,8 @@ import { PROFESSIONALS } from "@/app/data/match";
 import Pagination from "@/app/components/pagination/pagination";
 import MatchProfileCard from "@/app/components/card/matchProfileCard";
 import MatchList from "@/app/components/list/mtachList";
+import useResponsive from "@/app/hook/useResponsive";
+import MobileMatchTopMenu from "@/app/components/menu/mobileMatchTopMenu";
 
 const categories = [
   "아파트",
@@ -28,7 +30,8 @@ const categories = [
 ];
 
 const MatchPage = () => {
-  // 첫 번째 카테고리가 기본으로 선택되도록 초기화
+  const isMdUp = useResponsive("md");
+
   const [activeCategory, setActiveCategory] = useState<string>(categories[0]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const totalPages = 3;
@@ -42,26 +45,34 @@ const MatchPage = () => {
   };
 
   return (
-    <div className="py-12">
+    <div className="md:py-12 py-6">
       {/* <Image
         src={banner}
         alt="banner"
         height={100}
-        className="w-full max-w-[1040px] mx-auto"
+        className="w-full"
       /> */}
-      <div className="max-w-[1040px] mx-auto flex">
+      <div className={`flex ${isMdUp ? "flex-row" : "flex-col"}`}>
         {/* Left Side Menu */}
         <div className="flex flex-col">
-          <MatchLeftMenu
-            categories={categories}
-            activeCategory={activeCategory}
-            onCategoryClick={handleCategoryClick}
-          />
+          {isMdUp ? (
+            <MatchLeftMenu
+              categories={categories}
+              activeCategory={activeCategory}
+              onCategoryClick={handleCategoryClick}
+            />
+          ) : (
+            <MobileMatchTopMenu
+              categories={categories}
+              activeCategory={activeCategory}
+              onCategoryClick={handleCategoryClick}
+            />
+          )}
         </div>
 
         {/* Main Content */}
-        <div className="w-full ml-6 mt-5">
-          <MatchList /> 
+        <div className="w-full md:ml-0 lg:ml-6 md:mt-5">
+          <MatchList />
 
           {/* <div className="space-y-6">
             {PROFESSIONALS.map((professional) => (

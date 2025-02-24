@@ -90,7 +90,8 @@ export default {
         h1_r: ["32px", { fontWeight: 400, lineHeight: "48px" }],
         h1_s: ["32px", { fontWeight: 100, lineHeight: "48px" }],
         h2_large: ["28px", { fontWeight: 600, lineHeight: "42px" }],
-        h3_large: ["22px", { fontWeight: 600, lineHeight: "33px" }],
+        h3_large: ["24px", { fontWeight: 600, lineHeight: "33px" }],
+        h3_s: ["24px", { fontWeight: 100, lineHeight: "33px" }],
 
         h1_contents_title: ["24px", { fontWeight: 600 }],
         h2: ["21px", { fontWeight: 600 }],
@@ -115,6 +116,7 @@ export default {
         mobile_h2_large: ["22px", { fontWeight: 600, lineHeight: "33px" }],
         mobile_h1_s: ["28px", { fontWeight: 100, lineHeight: "48px" }],
         mobile_h2_s: ["22px", { fontWeight: 100, lineHeight: "48px" }],
+        mobile_h3_s: ["20px", { fontWeight: 100, lineHeight: "48px" }],
 
         mobile_h1_contents_title: ["18px", { fontWeight: 600 }],
         mobile_h1_sb: ["14px", { fontWeight: 600, lineHeight: "21px" }],
@@ -138,6 +140,7 @@ export default {
       screens: {
         sm: "360px",
         sm_md: "400px",
+        md_md: "600px",
         md: "768px",
         md_lg: "900px",
         lg: "1024px",

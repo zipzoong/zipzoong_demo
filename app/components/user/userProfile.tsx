@@ -115,8 +115,8 @@ const UserProfile: React.FC<UserProfileProps> = ({
             </div>
             <div
               className="lg:space-y-2 space-y-1 lg:mt-6 lg:mb-4 text-mobile_body3_r
-               md:text-body3_m lg:text-body2_m text-text_sub4
-               border-b border-gray-200 pb-6 md:pb-0 md:border-none"
+              md:text-body3_m lg:text-body2_m text-text_sub4
+              border-b border-gray-200 pb-6 md:pb-0 md:border-none"
             >
               <div className="flex items-center">
                 <p className="w-20">등록번호:</p>

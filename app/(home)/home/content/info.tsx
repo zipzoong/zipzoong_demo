@@ -17,7 +17,7 @@ const infoCards = [
 
 const Info = () => {
   return (
-    <div className="flex w-full bg-bg_sub py-12 md:py-20">
+    <div className="flex w-full bg-bg_sub py-12 md:pt-20 md:pb-32">
       <div className="max-w-[1040px] mx-auto md:px-5 px-4">
         {/* 제목 및 설명 */}
         <div className="flex flex-col items-start gap-1 md:gap-3 mb-6 md:mb-10 text-center md:text-left">

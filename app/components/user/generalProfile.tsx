@@ -32,7 +32,7 @@ interface UserProfileProps {
   registrationInfo: string;
 }
 
-const UserProfile: React.FC<UserProfileProps> = ({
+const GeneralProfile: React.FC<UserProfileProps> = ({
   name,
   location,
   imageUrl,
@@ -63,7 +63,6 @@ const UserProfile: React.FC<UserProfileProps> = ({
   const handleAllClick = () => {
     router.push(`/${activeTab}`);
   };
-
   return (
     <div className="w-full flex justify-center items-center mb-40">
       <div className="w-full flex flex-col justify-between h-full">
@@ -87,8 +86,8 @@ const UserProfile: React.FC<UserProfileProps> = ({
             </div>
             <div
               className="inline-flex rounded-sm md:text-body3_m items-center
-    text-token_4 bg-token_4_bg md:whitespace-nowrap overflow-hidden mt-3 md:mt-0
-    md:overflow-visible text-ellipsis text-mobile_body4_r py-1 px-2 md:px-3 max-w-fit"
+text-token_4 bg-token_4_bg md:whitespace-nowrap overflow-hidden mt-3 md:mt-0
+md:overflow-visible text-ellipsis text-mobile_body4_r py-1 px-2 md:px-3 max-w-fit"
             >
               <MdLink className="md:w-5 md:h-5 w-4 h-4 text-token_4 flex-shrink-0" />
               &nbsp;&nbsp;&nbsp;
@@ -101,7 +100,7 @@ const UserProfile: React.FC<UserProfileProps> = ({
             <div className="flex flex-col mt-6 mb-5 md:mt-0 md:mb-0">
               <h3
                 className="text-mobile_h4_sb md:text-body1_m text-text_sub2 mb-1
-              lg:text-h3_r lg:mt-3"
+          lg:text-h3_r lg:mt-3"
               >
                 Ratings
               </h3>
@@ -117,8 +116,8 @@ const UserProfile: React.FC<UserProfileProps> = ({
             </div>
             <div
               className="lg:space-y-2 space-y-1 lg:mt-6 lg:mb-4 text-mobile_body3_r
-              md:text-body3_m lg:text-body2_m text-text_sub4
-              border-b border-gray-200 pb-6 md:pb-0 md:border-none"
+          md:text-body3_m lg:text-body2_m text-text_sub4
+          border-b border-gray-200 pb-6 md:pb-0 md:border-none"
             >
               <div className="flex items-center">
                 <p className="w-20">등록번호:</p>
@@ -237,4 +236,4 @@ const UserProfile: React.FC<UserProfileProps> = ({
   );
 };
 
-export default UserProfile;
+export default GeneralProfile;

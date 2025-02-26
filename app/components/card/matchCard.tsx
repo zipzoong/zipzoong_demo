@@ -3,20 +3,27 @@ import ColorBadge from "../badge/colorBadge";
 import { MdFavorite } from "react-icons/md";
 import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/navigation";
-import { FaRegStar, FaStar } from "react-icons/fa";
+import { FaRegStar, FaStar, FaUserCircle } from "react-icons/fa";
 
 interface ProfileCardProps {
   professional: {
-    id: string;
-    profileImage: string | StaticImageData;
-    name: string;
+    // id: string;
+    // profileImage: string | StaticImageData;
+    // name: string;
     company: string;
-    title: string;
-    portfolioCount: number;
+    // title: string;
+    // portfolioCount: number;
     reviewCount: number;
-    area: string;
+    // area: string;
     rating: number;
     description: string;
+    // === api response ===
+    agentName: string;
+    agentSpecialty: string;
+    portfolioCount: number;
+    profileUrl: string;
+    title: string;
+    userId: number;
   };
 }
 
@@ -49,13 +56,17 @@ const MatchCard = ({ professional }: ProfileCardProps) => {
     >
       <div className="flex flex-row md:gap-5 gap-3 flex-nowrap">
         <div className="lg:w-36 lg:h-36 md:h-32 md:w-32 w-24 h-24 flex-shrink-0">
-          <div className="relative lg:w-36 lg:h-36 md:h-32 md:w-32 w-24 h-24 overflow-hidden">
-            <Image
-              src={professional.profileImage}
-              alt="프로필"
-              fill
-              className="object-cover rounded-xl"
-            />
+          <div className="relative lg:w-36 lg:h-36 md:h-32 md:w-32 w-24 h-24 overflow-hidden flex items-center justify-center bg-gray-200 rounded-xl">
+            {professional.profileUrl ? (
+              <Image
+                src={professional.profileUrl}
+                alt="프로필"
+                fill
+                className="object-cover rounded-xl"
+              />
+            ) : (
+              <FaUserCircle className="text-gray-400 text-6xl" />
+            )}
           </div>
         </div>
         <div className="flex w-full flex-col justify-between">
@@ -63,13 +74,13 @@ const MatchCard = ({ professional }: ProfileCardProps) => {
             <div className="flex flex-row justify-between">
               <div className="flex flex-col pt-1">
                 <div className="flex flex-row items-center gap-2 text-primary text-[10px] md:text-body3_m">
-                  <p>{professional.area}</p> |
+                  <p>{professional.agentSpecialty}</p> |
                   <p>포토폴리오 {professional.portfolioCount}개</p>
                 </div>
                 <div className="flex flex-col mt-3">
                   <div className="flex items-center flex-row md:gap-2 gap-1">
                     <h3 className="md:text-h2 text-mobile_h4 text-text">
-                      {professional.name}
+                      {professional.agentName}
                     </h3>
                     <p className="text-text_sub md:text-body3_r text-[9px]">
                       [{professional.company}]

@@ -1,12 +1,15 @@
-import { PROFESSIONALS } from "@/app/data/match";
 import MatchCard from "../card/matchCard";
 
-const MatchList = () => {
+interface MatchListProps {
+  data: any[];
+}
+
+const MatchList = ({ data }: MatchListProps) => {
   return (
     <>
       <div className="md:space-y-2">
-        {PROFESSIONALS.map((professional) => (
-          <MatchCard key={professional.id} professional={professional} />
+        {data.map((professional) => (
+          <MatchCard key={professional.userId} professional={professional} />
         ))}
       </div>
     </>

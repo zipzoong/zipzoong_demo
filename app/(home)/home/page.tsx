@@ -6,23 +6,8 @@ import CategoryList from "./content/category";
 import PopularService from "./content/popularService";
 import Info from "./content/info";
 import MainSection from "./content/mainSection";
-import { getMainMatching } from "@/app/api/main/api";
 
 const HomePage = () => {
-  useEffect(() => {
-    const fetchMain = async () => {
-      try {
-        const data = await getMainMatching();
-        console.log(data);
-      } catch (err) {
-        console.log;
-      } finally {
-      }
-    };
-
-    fetchMain();
-  }, []);
-
   return (
     <>
       <MainCarousel />

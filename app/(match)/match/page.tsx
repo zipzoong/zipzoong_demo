@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MatchLeftMenu from "@/app/components/menu/matchLeftMenu";
 import banner from "@/app/image/match/banner.svg";
 import Image from "next/image";
@@ -10,6 +10,7 @@ import MatchProfileCard from "@/app/components/card/matchProfileCard";
 import MatchList from "@/app/components/list/mtachList";
 import useResponsive from "@/app/hook/useResponsive";
 import MobileMatchTopMenu from "@/app/components/menu/mobileMatchTopMenu";
+import { getMainMatching } from "@/app/api/main/api";
 
 const categories = [
   "아파트",
@@ -32,6 +33,7 @@ const categories = [
 const MatchPage = () => {
   const isMdUp = useResponsive("md");
 
+  const [matchListData, setMatchListData] = useState<any[]>([]);
   const [activeCategory, setActiveCategory] = useState<string>(categories[0]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const totalPages = 3;
@@ -44,14 +46,25 @@ const MatchPage = () => {
     setActiveCategory(category);
   };
 
+  useEffect(() => {
+    const fetchMain = async () => {
+      try {
+        const data = await getMainMatching();
+        console.log(data);
+        setMatchListData(data.matching);
+        console.log(matchListData);
+      } catch (err) {
+        console.log;
+      } finally {
+      }
+    };
+
+    fetchMain();
+  }, []);
+
   return (
     <div className="md:py-12 py-6">
-      {/* <Image
-        src={banner}
-        alt="banner"
-        height={100}
-        className="w-full"
-      /> */}
+      {/* <Image src={banner} alt="banner" height={100} className="w-full" /> */}
       <div className={`flex ${isMdUp ? "flex-row" : "flex-col"}`}>
         {/* Left Side Menu */}
         <div className="flex flex-col">
@@ -72,7 +85,7 @@ const MatchPage = () => {
 
         {/* Main Content */}
         <div className="w-full md:ml-0 lg:ml-6 md:mt-5">
-          <MatchList />
+          <MatchList data={matchListData} />
 
           {/* <div className="space-y-6">
             {PROFESSIONALS.map((professional) => (

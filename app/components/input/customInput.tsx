@@ -7,6 +7,7 @@ type CustomInputProps = {
   value: string;
   placeholder?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  className?: string;
 };
 
 const CustomInput = ({
@@ -16,9 +17,10 @@ const CustomInput = ({
   value,
   placeholder,
   onChange,
+  className,
 }: CustomInputProps) => {
   return (
-    <div className="flex flex-col">
+    <div className={`flex flex-col ${className}`}>
       <label className="text-body2_r text-text_sub4 mb-2">{label}</label>
       <input
         type={type}

@@ -10,6 +10,7 @@ type CustomInputWithButtonProps = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onButtonClick: () => void;
   disabled?: boolean;
+  className?: string;
 };
 
 const InputWithButton = ({
@@ -21,10 +22,11 @@ const InputWithButton = ({
   buttonText,
   onChange,
   onButtonClick,
+  className,
   disabled = false,
 }: CustomInputWithButtonProps) => {
   return (
-    <div className="flex flex-col">
+    <div className={`flex flex-col ${className}`}>
       <label className="text-body2_r text-text_sub4 mb-1">{label}</label>
       <div className="flex flex-row gap-2">
         <input

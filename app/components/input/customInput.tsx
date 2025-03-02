@@ -19,7 +19,7 @@ const CustomInput = ({
 }: CustomInputProps) => {
   return (
     <div className="flex flex-col">
-      <label className="text-body2_r text-text_sub4 mb-1">{label}</label>
+      <label className="text-body2_r text-text_sub4 mb-2">{label}</label>
       <input
         type={type}
         name={name}

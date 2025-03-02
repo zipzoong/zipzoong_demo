@@ -29,7 +29,7 @@ const AgentUser = () => {
     residence: "103호 아파트",
     joinDate: "2023.04.01",
     activities: [
-      { name: "포트폴리오 관리", url: "/portfolio" },
+      { name: "포토폴리오 관리", url: "/mypage/portfolio" },
       { name: "후기 보기", url: "/reviews" },
       { name: "집플래너 서비스", url: "/house-planner" },
     ],

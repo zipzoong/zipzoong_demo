@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 const Layout = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
 
-  const specialPaths = ["/home", "/terms", "/mypage"];
+  const specialPaths = ["/home", "/terms"];
 
   const isSpecialComponent = specialPaths.some((path) =>
     pathname.includes(path)

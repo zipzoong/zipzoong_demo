@@ -4,6 +4,7 @@ export const BASE_URL = "/api/v1";
 export const KAKAO_LOGIN = "/api/auth/kakao";
 export const LOGOUT = "/api/auth/logout";
 export const WHITDRAW = "/api/auth/withdraw";
+export const REISSUE = "/api/auth/renew";
 
 // 이메일 회원가입/로그인
 export const LOGIN = "api/v1/email/login";

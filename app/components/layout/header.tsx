@@ -8,7 +8,8 @@ import logo from "@/app/image/icon/logo_main.svg";
 import logo_icon from "@/app/image/icon/logo_icon.svg";
 import PrimaryBtn from "../button/primaryBtn";
 import { motion } from "framer-motion";
-
+import LoginModal from "../modal/loginModal";
+import MobileLoginModal from "../modal/mobileLoginModal";
 interface HeaderProps {
   isLoggedIn: boolean;
 }
@@ -16,7 +17,10 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
   const router = useRouter();
   const pathname = usePathname();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
+  const [isMobileLoginModalOpen, setIsMobileLoginModalOpen] =
+    useState<boolean>(false);
 
   const handleNavigate = (path: string) => {
     router.push(path);
@@ -125,7 +129,12 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
             {isLoggedIn ? (
               <button className="text-text text-body3_r">로그아웃</button>
             ) : (
-              <button className="text-text text-body3_r">로그인</button>
+              <button
+                className="text-text text-body3_r"
+                onClick={() => setIsMobileLoginModalOpen(true)}
+              >
+                로그인
+              </button>
             )}
             <button className="text-primary text-body3_r">회원가입</button>
           </div>
@@ -142,12 +151,23 @@ const Header: React.FC<HeaderProps> = ({ isLoggedIn }) => {
                 <User className="w-8 h-8 text-text cursor-pointer" />
               </div>
             ) : (
-              <button className="text-text">로그인</button>
+              <button
+                className="text-text"
+                onClick={() => setIsLoginModalOpen(true)}
+              >
+                로그인
+              </button>
             )}
             <PrimaryBtn text={"회원가입"} onClick={() => {}} />
           </div>
         </div>
       </header>
+      {isLoginModalOpen && (
+        <LoginModal onClose={() => setIsLoginModalOpen(false)} />
+      )}
+      {isMobileLoginModalOpen && (
+        <MobileLoginModal onClose={() => setIsMobileLoginModalOpen(false)} />
+      )}
     </div>
   );
 };
